@@ -11,6 +11,7 @@ export const story: Story = {
     {
       id: 'intro',
       title: 'Problem space',
+      image: '/story/scene-intro.jpeg',
       body: 'We need to strengthen the journey for “Good Fit HEC” customers. A references experience that works could unlock real value for Zinc — if we make the right calls from problem through to launch.',
       choices: [
         {
@@ -24,6 +25,7 @@ export const story: Story = {
     {
       id: 'd1_problem',
       title: 'Decision 1 — Problem choice',
+      image: '/story/scene-d1.jpeg',
       body: 'A customer problem has surfaced. How should we decide what to build?',
       choices: [
         {
@@ -65,6 +67,7 @@ export const story: Story = {
     {
       id: 'd2_solgen',
       title: 'Decision 2 — Solution generation',
+      image: '/story/scene-d2.jpeg',
       body: 'The problem is clearer. How do we pick what to build?',
       choices: [
         {
@@ -104,6 +107,7 @@ export const story: Story = {
     {
       id: 'd3_scoping',
       title: 'Decision 3 — Scoping the work',
+      image: '/story/scene-d3.jpeg',
       body: 'We have about four weeks on the clock. What do we commit to?',
       choices: [
         {
@@ -144,6 +148,7 @@ export const story: Story = {
     {
       id: 'd4_kickoff',
       title: 'Decision 4 — Implementation kick-off',
+      image: '/story/scene-d4.jpeg',
       body: 'Build is about to start. How do we open the project?',
       choices: [
         {
@@ -184,6 +189,7 @@ export const story: Story = {
     {
       id: 'd5_third_party',
       title: 'Decision 5 — Third-party delay',
+      image: '/story/scene-d5.jpeg',
       body: 'A partner has not delivered their piece yet. What do we do?',
       choices: [
         {
