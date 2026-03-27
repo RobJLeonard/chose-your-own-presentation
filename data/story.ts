@@ -1,317 +1,397 @@
 import type { Story } from '~/types/story'
 
+/**
+ * Branching story from the Fry-Up Prep FigJam board.
+ * Only choices whose description includes "CORRECT" advance; all others are dead ends.
+ */
 export const story: Story = {
   title: 'From Problem to Launch',
   startSceneId: 'intro',
   scenes: [
     {
       id: 'intro',
-      title: 'A new opportunity appears',
-      body: 'A customer problem has surfaced and the team believes there may be a valuable feature to build. The journey begins with understanding the problem space properly.',
+      title: 'Problem space',
+      body: 'We need to strengthen the journey for “Good Fit HEC” customers. A references experience that works could unlock real value for Zinc — if we make the right calls from problem through to launch.',
       choices: [
         {
-          label: 'Explore the problem space properly',
-          description: 'Use evidence, research, and signals to understand the real issue.',
-          nextSceneId: 'problem_good'
-        },
-        {
-          label: 'Jump straight to a solution idea',
-          description: 'Move quickly, but risk solving the wrong problem.',
-          nextSceneId: 'problem_bad'
+          label: 'Start the journey',
+          description: 'See where the first decision takes us.',
+          nextSceneId: 'd1_problem'
         }
       ]
     },
 
     {
-      id: 'problem_good',
-      title: 'Problem space identified well',
-      body: 'The team looks at data, user feedback, and internal insight. A clear problem statement starts to emerge, giving everyone a shared understanding of what needs to be solved.',
+      id: 'd1_problem',
+      title: 'Decision 1 — Problem choice',
+      body: 'A customer problem has surfaced. How should we decide what to build?',
       choices: [
         {
-          label: 'Scope the project with clear outcomes',
-          description: 'Define goals, boundaries, and success measures.',
-          nextSceneId: 'scope_good'
+          label: 'Griffin brainstorm',
+          description:
+            'Get the tech team down to the Griffin for a few drinks and see what good ideas pop up.',
+          nextSceneId: 'dead_d1_griffin'
         },
         {
-          label: 'Keep scope broad and flexible',
-          description: 'Stay open-ended, but risk confusion and drift.',
-          nextSceneId: 'scope_bad'
+          label: '“Just trust me”',
+          description:
+            'You do not need to ask anyone — you can just tell everyone what needs to be done.',
+          nextSceneId: 'dead_d1_trust'
+        },
+        {
+          label: 'Evidence first',
+          description:
+            'CORRECT — Conduct a range of internal and external interviews, and validate your assumptions using data.',
+          nextSceneId: 'd2_solgen'
         }
       ]
     },
     {
-      id: 'problem_bad',
-      title: 'A solution without a clear problem',
-      body: 'The team rallies around an idea before validating the real issue. Momentum feels good, but assumptions start replacing evidence, making later decisions fragile.',
-      choices: [
-        {
-          label: 'Pause and reframe the project properly',
-          description: 'Step back and return to structured scoping.',
-          nextSceneId: 'scope_good'
-        },
-        {
-          label: 'Keep pushing forward anyway',
-          description: 'Continue with uncertainty and hope it works out.',
-          nextSceneId: 'scope_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'scope_good',
-      title: 'Well-scoped initiative',
-      body: 'The team defines what success looks like, what is out of scope, and what constraints matter. There is enough clarity to make smart design decisions without overcommitting.',
-      choices: [
-        {
-          label: 'Design with validation and collaboration',
-          description: 'Use lightweight design, shared thinking, and feedback.',
-          nextSceneId: 'design_good'
-        },
-        {
-          label: 'Design in isolation',
-          description: 'Move fast visually, but risk disconnect from users and team context.',
-          nextSceneId: 'design_bad'
-        }
-      ]
-    },
-    {
-      id: 'scope_bad',
-      title: 'Scope starts to drift',
-      body: 'The project is framed loosely: people use different definitions of success, new ideas keep getting added, and the team struggles to align around what should actually be built.',
-      choices: [
-        {
-          label: 'Tighten the scope before moving on',
-          description: 'Regain focus and create a strong design brief.',
-          nextSceneId: 'design_good'
-        },
-        {
-          label: 'Let design absorb the ambiguity',
-          description: 'Hope the design phase will sort everything out.',
-          nextSceneId: 'design_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'design_good',
-      title: 'Design with intent',
-      body: 'Design explores the solution space with clear tradeoffs in mind. Flows are reviewed early, assumptions are challenged, and the team builds confidence in the approach before planning begins.',
-      choices: [
-        {
-          label: 'Plan in milestones with clear ownership',
-          description: 'Break delivery into manageable steps.',
-          nextSceneId: 'planning_good'
-        },
-        {
-          label: 'Create one large delivery plan',
-          description: 'Aim for one big push, but hide risks until late.',
-          nextSceneId: 'planning_bad'
-        }
-      ]
-    },
-    {
-      id: 'design_bad',
-      title: 'Design drifts off course',
-      body: 'The design work looks polished, but key assumptions were never tested. Important questions about feasibility, priority, and user value remain unresolved as the team heads into planning.',
-      choices: [
-        {
-          label: 'Rework the plan around smaller validated steps',
-          description: 'Reduce risk before development begins.',
-          nextSceneId: 'planning_good'
-        },
-        {
-          label: 'Plan around the full unvalidated vision',
-          description: 'Commit to a path with a lot of hidden uncertainty.',
-          nextSceneId: 'planning_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'planning_good',
-      title: 'Thoughtful planning',
-      body: 'The work is broken into milestones, responsibilities are clear, and dependencies are visible. The team knows what they are doing first, what can wait, and how progress will be tracked.',
-      choices: [
-        {
-          label: 'Develop iteratively with regular check-ins',
-          description: 'Build in loops with design, product, and QA.',
-          nextSceneId: 'development_good'
-        },
-        {
-          label: 'Build in isolation until it is “done”',
-          description: 'Reduce interruptions, but risk late surprises.',
-          nextSceneId: 'development_bad'
-        }
-      ]
-    },
-    {
-      id: 'planning_bad',
-      title: 'Planning without control',
-      body: 'The plan is heavy, optimistic, and hard to adapt. Unknowns are buried inside large workstreams, and the team has little room to adjust once delivery starts.',
-      choices: [
-        {
-          label: 'Reset to an iterative delivery approach',
-          description: 'Simplify execution and create faster feedback loops.',
-          nextSceneId: 'development_good'
-        },
-        {
-          label: 'Push through the big-bang plan',
-          description: 'Hope the unknowns do not become blockers.',
-          nextSceneId: 'development_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'development_good',
-      title: 'Healthy development flow',
-      body: 'Development happens in small increments. Questions get resolved early, feedback comes in continuously, and the feature evolves with fewer surprises and better alignment.',
-      choices: [
-        {
-          label: 'Test continuously throughout development',
-          description: 'Catch issues early and validate the feature in realistic scenarios.',
-          nextSceneId: 'testing_good'
-        },
-        {
-          label: 'Leave testing until the end',
-          description: 'Save time now, but compress quality later.',
-          nextSceneId: 'testing_bad'
-        }
-      ]
-    },
-    {
-      id: 'development_bad',
-      title: 'Late-stage surprises',
-      body: 'Development continues for a while without much shared visibility. When the feature is finally reviewed, gaps appear in edge cases, UX details, and readiness expectations.',
-      choices: [
-        {
-          label: 'Introduce structured testing and recovery',
-          description: 'Stabilise the work before release preparation.',
-          nextSceneId: 'testing_good'
-        },
-        {
-          label: 'Rush to finish and hope for the best',
-          description: 'Carry quality risk into the next stage.',
-          nextSceneId: 'testing_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'testing_good',
-      title: 'Testing builds confidence',
-      body: 'The feature is tested in realistic workflows, bugs are resolved before they multiply, and the team becomes more confident that the experience will hold up once released.',
-      choices: [
-        {
-          label: 'Run a clear enablement session',
-          description: 'Prepare internal teams to understand and support the feature.',
-          nextSceneId: 'enablement_good'
-        },
-        {
-          label: 'Skip or rush internal enablement',
-          description: 'Assume everyone will figure it out later.',
-          nextSceneId: 'enablement_bad'
-        }
-      ]
-    },
-    {
-      id: 'testing_bad',
-      title: 'Quality pressure builds',
-      body: 'Testing uncovers issues late, and the team is now balancing bug fixing, release pressure, and internal expectations all at once. Confidence is lower than it should be.',
-      choices: [
-        {
-          label: 'Slow down and align the business properly',
-          description: 'Use enablement to reduce confusion before launch.',
-          nextSceneId: 'enablement_good'
-        },
-        {
-          label: 'Move on without proper preparation',
-          description: 'Carry avoidable confusion into release.',
-          nextSceneId: 'enablement_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'enablement_good',
-      title: 'Teams are enabled',
-      body: 'Product, support, sales, and other stakeholders understand what is changing, why it matters, and how to talk about it. Internal confidence starts to match delivery confidence.',
-      choices: [
-        {
-          label: 'Release in a controlled way',
-          description: 'Use flags, monitoring, and a measured rollout.',
-          nextSceneId: 'release_good'
-        },
-        {
-          label: 'Release everything at once',
-          description: 'Go wide immediately and accept higher risk.',
-          nextSceneId: 'release_bad'
-        }
-      ]
-    },
-    {
-      id: 'enablement_bad',
-      title: 'Internal confusion',
-      body: 'The feature may be nearly ready, but the people around it are not. Questions arise about positioning, support, rollout expectations, and what success should look like after launch.',
-      choices: [
-        {
-          label: 'Take a more deliberate release path',
-          description: 'Reduce launch risk with a controlled rollout.',
-          nextSceneId: 'release_good'
-        },
-        {
-          label: 'Ship broadly despite the gaps',
-          description: 'Hope adoption and understanding catch up later.',
-          nextSceneId: 'release_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'release_good',
-      title: 'Controlled release',
-      body: 'The feature is released gradually with monitoring in place. Early signals are watched closely, issues can be corrected quickly, and the team learns as adoption grows.',
-      choices: [
-        {
-          label: 'Announce with clear value and audience targeting',
-          description: 'Make sure the launch message matches the feature impact.',
-          nextSceneId: 'announcement_good'
-        },
-        {
-          label: 'Send a rushed generic announcement',
-          description: 'Technically launched, but easy to miss or misunderstand.',
-          nextSceneId: 'announcement_bad'
-        }
-      ]
-    },
-    {
-      id: 'release_bad',
-      title: 'A risky launch',
-      body: 'The feature lands everywhere at once. Any hidden issue now has maximum visibility, and internal teams are forced to react quickly under pressure.',
-      choices: [
-        {
-          label: 'Recover with a thoughtful announcement',
-          description: 'At least make the message clear and useful.',
-          nextSceneId: 'announcement_good'
-        },
-        {
-          label: 'Announce quickly and move on',
-          description: 'Treat launch comms as a box to tick.',
-          nextSceneId: 'announcement_bad'
-        }
-      ]
-    },
-
-    {
-      id: 'announcement_good',
-      title: 'A strong launch story',
-      body: 'The feature is announced with clear messaging, the right audience context, and a strong explanation of value. Adoption starts with understanding, and the journey from problem to launch feels intentional.',
+      id: 'dead_d1_griffin',
+      title: 'Wrong turn',
+      body: 'You pick bee farming instead of background checking. Hay fever was not in the business plan; the venture folds.',
       choices: []
     },
     {
-      id: 'announcement_bad',
-      title: 'The feature lands quietly',
-      body: 'The work shipped, but the message did not. The audience receives a vague or rushed announcement, adoption is slower than expected, and the impact of the feature is harder to realise.',
+      id: 'dead_d1_trust',
+      title: 'Wrong turn',
+      body: 'You ship the one thing a noisy customer asked for. It does not work for the rest of HEC. Reviews tank and half the customer base walks.',
+      choices: []
+    },
+
+    {
+      id: 'd2_solgen',
+      title: 'Decision 2 — Solution generation',
+      body: 'The problem is clearer. How do we pick what to build?',
+      choices: [
+        {
+          label: 'Copy a competitor',
+          description: 'Lift their flow and tweak the colours.',
+          nextSceneId: 'dead_d2_copy'
+        },
+        {
+          label: 'Structured workshop',
+          description:
+            'CORRECT — Run a solution generation meeting with clear boundaries on the problem space. Vote on the best solution based on feasibility and impact.',
+          nextSceneId: 'd3_scoping'
+        },
+        {
+          label: 'Back to the Griffin',
+          description: 'Have drinks until a good idea hits.',
+          nextSceneId: 'dead_d2_griffin'
+        }
+      ]
+    },
+    {
+      id: 'dead_d2_copy',
+      title: 'Wrong turn',
+      body: 'You optimise for parity, not fit. The team burns time matching someone else’s roadmap instead of your customers’ reality.',
+      choices: []
+    },
+    {
+      id: 'dead_d2_griffin',
+      title: 'Wrong turn',
+      body: 'Ideas get louder; clarity does not. The backlog fills with bar-napkin commitments nobody can defend.',
+      choices: []
+    },
+
+    {
+      id: 'd3_scoping',
+      title: 'Decision 3 — Scoping the work',
+      body: 'We have about four weeks on the clock. What do we commit to?',
+      choices: [
+        {
+          label: 'Tight UX plus flow work',
+          description:
+            'Minor improvements to the recruiter UX (one to two weeks) and a medium-sized overhaul of the candidate flow (two weeks).',
+          nextSceneId: 'dead_d3_split'
+        },
+        {
+          label: 'Focused impact',
+          description:
+            'CORRECT — Aim to solve a larger, impactful problem (two to three weeks).',
+          nextSceneId: 'd4_kickoff'
+        },
+        {
+          label: 'AI everything',
+          description:
+            'Create an AI chatbot that writes referee reports and flags issues from preferences — “four weeks tops”.',
+          nextSceneId: 'dead_d3_ai'
+        }
+      ]
+    },
+    {
+      id: 'dead_d3_split',
+      title: 'Wrong turn',
+      body: 'You ship a haphazard “add character reference” button. Candidates add their mates; CS and AM drown. HEC customers revolt.',
+      choices: []
+    },
+    {
+      id: 'dead_d3_ai',
+      title: 'Wrong turn',
+      body: 'The bot ships on time, then fails on messy employment histories and edge cases. Trust erodes faster than the demo impressed.',
+      choices: []
+    },
+
+    {
+      id: 'd4_kickoff',
+      title: 'Decision 4 — Implementation kick-off',
+      body: 'Build is about to start. How do we open the project?',
+      choices: [
+        {
+          label: 'Planning with the whole team',
+          description:
+            'CORRECT — Gather the team for feature planning and get feedback from the whole team on potential problems and issues.',
+          nextSceneId: 'd5_third_party'
+        },
+        {
+          label: 'Straight to build',
+          description:
+            'There is never enough time — catch up on the way and start building immediately.',
+          nextSceneId: 'dead_d4_rush'
+        },
+        {
+          label: 'Griffin FYI',
+          description: 'Give the other teams a heads-up over drinks so they are loosely in the loop.',
+          nextSceneId: 'dead_d4_griffin'
+        }
+      ]
+    },
+    {
+      id: 'dead_d4_rush',
+      title: 'Wrong turn',
+      body: 'Surprises stack up in integration. You spend the sprint untangling assumptions that a single planning session would have surfaced.',
+      choices: []
+    },
+    {
+      id: 'dead_d4_griffin',
+      title: 'Wrong turn',
+      body: 'People remember the toast, not the scope. When things go wrong, nobody agrees what “in the loop” meant.',
+      choices: []
+    },
+
+    {
+      id: 'd5_third_party',
+      title: 'Decision 5 — Third-party delay',
+      body: 'A partner has not delivered their piece yet. What do we do?',
+      choices: [
+        {
+          label: 'Pause and wait it out',
+          description: 'Pause the feature and head to the Griffin until they are ready.',
+          nextSceneId: 'dead_d5_pub'
+        },
+        {
+          label: 'Bring it in-house, fast',
+          description:
+            'Drop the vendor and rebuild what they were meant to deliver — “just vibe code it, it is easy”.',
+          nextSceneId: 'dead_d5_vibe'
+        },
+        {
+          label: 'Partner properly',
+          description:
+            'CORRECT — Work collaboratively with the third party on a realistic plan. Keep following up, and if needed move people to other work while we wait.',
+          nextSceneId: 'd6_testing'
+        }
+      ]
+    },
+    {
+      id: 'dead_d5_pub',
+      title: 'Wrong turn',
+      body: 'The roadmap goes quiet while the pub stays loud. Stakeholders assume you have given up.',
+      choices: []
+    },
+    {
+      id: 'dead_d5_vibe',
+      title: 'Wrong turn',
+      body: 'You inherit operational risk you did not price. Production incidents become your new stand-up.',
+      choices: []
+    },
+
+    {
+      id: 'd6_testing',
+      title: 'Decision 6 — Testing',
+      body: 'The feature has been tested, but how far do we go before we call it ready?',
+      choices: [
+        {
+          label: 'Test in production',
+          description: 'If something breaks, our users will tell us.',
+          nextSceneId: 'dead_d6_prod'
+        },
+        {
+          label: 'Plan plus automation',
+          description:
+            'CORRECT — Check user stories against the test plan manually, and build end-to-end tests that run before launch and on every change from here on.',
+          nextSceneId: 'd7_cross_team'
+        },
+        {
+          label: 'Defer quality',
+          description: 'Merge now; we will add tests when things calm down.',
+          nextSceneId: 'dead_d6_skip'
+        }
+      ]
+    },
+    {
+      id: 'dead_d6_prod',
+      title: 'Wrong turn',
+      body: 'The blast radius is real. You trade a quiet Friday for a loud weekend.',
+      choices: []
+    },
+    {
+      id: 'dead_d6_skip',
+      title: 'Wrong turn',
+      body: 'Regression debt compounds. Every future change feels like guesswork.',
+      choices: []
+    },
+
+    {
+      id: 'd7_cross_team',
+      title: 'Decision 7 — Cross-team review',
+      body: 'Testing has gone well. What happens next?',
+      choices: [
+        {
+          label: 'Ship and celebrate',
+          description: 'Ship it and head to the Griffin.',
+          nextSceneId: 'dead_d7_ship'
+        },
+        {
+          label: 'Fresh eyes',
+          description:
+            'CORRECT — Ask someone outside our team to review the feature.',
+          nextSceneId: 'd8_deploy'
+        },
+        {
+          label: 'Run it all again',
+          description: 'Test everything from scratch, indefinitely.',
+          nextSceneId: 'dead_d7_loop'
+        }
+      ]
+    },
+    {
+      id: 'dead_d7_ship',
+      title: 'Wrong turn',
+      body: 'A blind spot you could have caught with one review becomes everyone’s incident.',
+      choices: []
+    },
+    {
+      id: 'dead_d7_loop',
+      title: 'Wrong turn',
+      body: 'Momentum dies in endless re-runs. The market does not wait for your twentieth full pass.',
+      choices: []
+    },
+
+    {
+      id: 'd8_deploy',
+      title: 'Decision 8 — Deployment',
+      body: 'After a hard week, the feature is ready to go live on Friday afternoon. What do we do?',
+      choices: [
+        {
+          label: 'Ship and run',
+          description: 'Ship it and head to the Griffin.',
+          nextSceneId: 'dead_d8_griffin'
+        },
+        {
+          label: 'Cover the launch',
+          description:
+            'Deploy the feature and ask that a few engineers stick around a bit longer in case anything goes wrong.',
+          nextSceneId: 'dead_d8_friday'
+        },
+        {
+          label: 'Wait for Monday',
+          description:
+            'CORRECT — Wait until Monday so we can monitor the release and roll back if there are any issues.',
+          nextSceneId: 'd9_announce'
+        }
+      ]
+    },
+    {
+      id: 'dead_d8_griffin',
+      title: 'Wrong turn',
+      body: 'The pager does not care about happy hour. You learn about the outage from customer posts.',
+      choices: []
+    },
+    {
+      id: 'dead_d8_friday',
+      title: 'Wrong turn',
+      body: 'You stay online, but you still shipped into Friday peak with half the company offline. The incident runs longer than the rota.',
+      choices: []
+    },
+
+    {
+      id: 'd9_announce',
+      title: 'Decision 9 — Release announcement',
+      body: 'The feature is live. How do we tell the company?',
+      choices: [
+        {
+          label: 'Griffin microphone',
+          description: 'Get on the mic at the Griffin and announce the feature is live.',
+          nextSceneId: 'dead_d9_mic'
+        },
+        {
+          label: 'Structured comms',
+          description:
+            'CORRECT — Send a pre-release message to the company, then follow up with a notification and release notes when the feature goes live.',
+          nextSceneId: 'd10_whats_next'
+        },
+        {
+          label: 'Organic discovery',
+          description: 'The feature is so good people will naturally find it and love it.',
+          nextSceneId: 'dead_d9_hope'
+        }
+      ]
+    },
+    {
+      id: 'dead_d9_mic',
+      title: 'Wrong turn',
+      body: 'Half the company hears a garbled toast; the other half hears nothing. Support still gets ambushed.',
+      choices: []
+    },
+    {
+      id: 'dead_d9_hope',
+      title: 'Wrong turn',
+      body: 'Silence is not confidence. Adoption flatlines while everyone assumes someone else already knows.',
+      choices: []
+    },
+
+    {
+      id: 'd10_whats_next',
+      title: 'Decision 10 — What is next?',
+      body: 'The release landed. How does the team close the loop?',
+      choices: [
+        {
+          label: 'Celebrate',
+          description: 'Go for a celebratory drink at the Griffin — you have earned it.',
+          nextSceneId: 'dead_d10_party'
+        },
+        {
+          label: 'Immediately build more',
+          description: 'Start the next feature right away.',
+          nextSceneId: 'dead_d10_stack'
+        },
+        {
+          label: 'Learn from reality',
+          description:
+            'CORRECT — Watch product analytics to see whether people use what we built and where they struggle.',
+          nextSceneId: 'ending_win'
+        }
+      ]
+    },
+    {
+      id: 'dead_d10_party',
+      title: 'Wrong turn',
+      body: 'The party was fun; the dashboards stayed dark. You celebrate a launch you never measure.',
+      choices: []
+    },
+    {
+      id: 'dead_d10_stack',
+      title: 'Wrong turn',
+      body: 'The team never catches its breath. Quality slips on the next thing before this one proves its value.',
+      choices: []
+    },
+
+    {
+      id: 'ending_win',
+      title: 'You kept the story honest',
+      body: 'From problem discovery through deployment and comms, you picked the path that respects evidence, collaboration, and learning. That is how “Good Fit HEC” stops being a slide and starts being an experience.',
       choices: []
     }
   ]
