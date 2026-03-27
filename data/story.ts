@@ -49,6 +49,7 @@ export const story: Story = {
     {
       id: 'dead_d1_griffin',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'You pick bee farming instead of background checking. Hay fever was not in the business plan; the venture folds.',
       choices: []
@@ -94,6 +95,7 @@ export const story: Story = {
     {
       id: 'dead_d2_griffin',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'Ideas get louder; clarity does not. The backlog fills with bar-napkin commitments nobody can defend.',
       choices: []
@@ -173,6 +175,7 @@ export const story: Story = {
     {
       id: 'dead_d4_griffin',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'People remember the toast, not the scope. When things go wrong, nobody agrees what “in the loop” meant.',
       choices: []
@@ -205,6 +208,7 @@ export const story: Story = {
     {
       id: 'dead_d5_pub',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'The roadmap goes quiet while the pub stays loud. Stakeholders assume you have given up.',
       choices: []
@@ -281,6 +285,7 @@ export const story: Story = {
     {
       id: 'dead_d7_ship',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'A blind spot you could have caught with one review becomes everyone’s incident.',
       choices: []
@@ -320,6 +325,7 @@ export const story: Story = {
     {
       id: 'dead_d8_griffin',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'The pager does not care about happy hour. You learn about the outage from customer posts.',
       choices: []
@@ -358,6 +364,7 @@ export const story: Story = {
     {
       id: 'dead_d9_mic',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'Half the company hears a garbled toast; the other half hears nothing. Support still gets ambushed.',
       choices: []
@@ -396,6 +403,7 @@ export const story: Story = {
     {
       id: 'dead_d10_party',
       title: 'Wrong turn',
+      image: '/story/griffin.jpeg',
       allowBack: true,
       body: 'The party was fun; the dashboards stayed dark. You celebrate a launch you never measure.',
       choices: []
