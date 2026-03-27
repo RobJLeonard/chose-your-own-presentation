@@ -49,6 +49,25 @@ const storyState = useStory()
               @choose="storyState.chooseOption"
             />
             <div
+              v-else-if="storyState.canGoBack"
+              class="flex flex-col gap-4 rounded-xl border border-amber-500/30 bg-amber-950/25 px-6 py-5 text-amber-50 sm:flex-row sm:flex-wrap sm:items-center"
+            >
+              <button
+                type="button"
+                class="rounded-lg border border-amber-500/60 bg-amber-900/40 px-5 py-3 font-medium text-amber-50 transition hover:border-amber-400 hover:bg-amber-900/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
+                @click="storyState.goBack"
+              >
+                Go back to the last decision
+              </button>
+              <button
+                type="button"
+                class="rounded-lg border border-slate-600 px-5 py-3 text-sm font-medium text-slate-300 transition hover:border-slate-500 hover:bg-slate-800/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-400"
+                @click="storyState.restart"
+              >
+                Start over
+              </button>
+            </div>
+            <div
               v-else
               class="rounded-xl border border-emerald-500/30 bg-emerald-950/30 px-6 py-5 text-emerald-50"
             >

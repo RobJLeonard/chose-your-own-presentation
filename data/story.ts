@@ -2,7 +2,7 @@ import type { Story } from '~/types/story'
 
 /**
  * Branching story from the Fry-Up Prep FigJam board.
- * Only choices whose description includes "CORRECT" advance; all others are dead ends.
+ * Routing is defined per choice; only the intended path advances to the next decision.
  */
 export const story: Story = {
   title: 'From Problem to Launch',
@@ -41,7 +41,7 @@ export const story: Story = {
         {
           label: 'Evidence first',
           description:
-            'CORRECT — Conduct a range of internal and external interviews, and validate your assumptions using data.',
+            'Conduct a range of internal and external interviews, and validate your assumptions using data.',
           nextSceneId: 'd2_solgen'
         }
       ]
@@ -49,12 +49,14 @@ export const story: Story = {
     {
       id: 'dead_d1_griffin',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'You pick bee farming instead of background checking. Hay fever was not in the business plan; the venture folds.',
       choices: []
     },
     {
       id: 'dead_d1_trust',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'You ship the one thing a noisy customer asked for. It does not work for the rest of HEC. Reviews tank and half the customer base walks.',
       choices: []
     },
@@ -72,7 +74,7 @@ export const story: Story = {
         {
           label: 'Structured workshop',
           description:
-            'CORRECT — Run a solution generation meeting with clear boundaries on the problem space. Vote on the best solution based on feasibility and impact.',
+            'Run a solution generation meeting with clear boundaries on the problem space. Vote on the best solution based on feasibility and impact.',
           nextSceneId: 'd3_scoping'
         },
         {
@@ -85,12 +87,14 @@ export const story: Story = {
     {
       id: 'dead_d2_copy',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'You optimise for parity, not fit. The team burns time matching someone else’s roadmap instead of your customers’ reality.',
       choices: []
     },
     {
       id: 'dead_d2_griffin',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'Ideas get louder; clarity does not. The backlog fills with bar-napkin commitments nobody can defend.',
       choices: []
     },
@@ -109,7 +113,7 @@ export const story: Story = {
         {
           label: 'Focused impact',
           description:
-            'CORRECT — Aim to solve a larger, impactful problem (two to three weeks).',
+            'Aim to solve a larger, impactful problem (two to three weeks).',
           nextSceneId: 'd4_kickoff'
         },
         {
@@ -123,12 +127,14 @@ export const story: Story = {
     {
       id: 'dead_d3_split',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'You ship a haphazard “add character reference” button. Candidates add their mates; CS and AM drown. HEC customers revolt.',
       choices: []
     },
     {
       id: 'dead_d3_ai',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'The bot ships on time, then fails on messy employment histories and edge cases. Trust erodes faster than the demo impressed.',
       choices: []
     },
@@ -141,7 +147,7 @@ export const story: Story = {
         {
           label: 'Planning with the whole team',
           description:
-            'CORRECT — Gather the team for feature planning and get feedback from the whole team on potential problems and issues.',
+            'Gather the team for feature planning and get feedback from the whole team on potential problems and issues.',
           nextSceneId: 'd5_third_party'
         },
         {
@@ -160,12 +166,14 @@ export const story: Story = {
     {
       id: 'dead_d4_rush',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'Surprises stack up in integration. You spend the sprint untangling assumptions that a single planning session would have surfaced.',
       choices: []
     },
     {
       id: 'dead_d4_griffin',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'People remember the toast, not the scope. When things go wrong, nobody agrees what “in the loop” meant.',
       choices: []
     },
@@ -189,7 +197,7 @@ export const story: Story = {
         {
           label: 'Partner properly',
           description:
-            'CORRECT — Work collaboratively with the third party on a realistic plan. Keep following up, and if needed move people to other work while we wait.',
+            'Work collaboratively with the third party on a realistic plan. Keep following up, and if needed move people to other work while we wait.',
           nextSceneId: 'd6_testing'
         }
       ]
@@ -197,12 +205,14 @@ export const story: Story = {
     {
       id: 'dead_d5_pub',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'The roadmap goes quiet while the pub stays loud. Stakeholders assume you have given up.',
       choices: []
     },
     {
       id: 'dead_d5_vibe',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'You inherit operational risk you did not price. Production incidents become your new stand-up.',
       choices: []
     },
@@ -220,7 +230,7 @@ export const story: Story = {
         {
           label: 'Plan plus automation',
           description:
-            'CORRECT — Check user stories against the test plan manually, and build end-to-end tests that run before launch and on every change from here on.',
+            'Check user stories against the test plan manually, and build end-to-end tests that run before launch and on every change from here on.',
           nextSceneId: 'd7_cross_team'
         },
         {
@@ -233,12 +243,14 @@ export const story: Story = {
     {
       id: 'dead_d6_prod',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'The blast radius is real. You trade a quiet Friday for a loud weekend.',
       choices: []
     },
     {
       id: 'dead_d6_skip',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'Regression debt compounds. Every future change feels like guesswork.',
       choices: []
     },
@@ -256,7 +268,7 @@ export const story: Story = {
         {
           label: 'Fresh eyes',
           description:
-            'CORRECT — Ask someone outside our team to review the feature.',
+            'Ask someone outside our team to review the feature.',
           nextSceneId: 'd8_deploy'
         },
         {
@@ -269,12 +281,14 @@ export const story: Story = {
     {
       id: 'dead_d7_ship',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'A blind spot you could have caught with one review becomes everyone’s incident.',
       choices: []
     },
     {
       id: 'dead_d7_loop',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'Momentum dies in endless re-runs. The market does not wait for your twentieth full pass.',
       choices: []
     },
@@ -298,7 +312,7 @@ export const story: Story = {
         {
           label: 'Wait for Monday',
           description:
-            'CORRECT — Wait until Monday so we can monitor the release and roll back if there are any issues.',
+            'Wait until Monday so we can monitor the release and roll back if there are any issues.',
           nextSceneId: 'd9_announce'
         }
       ]
@@ -306,12 +320,14 @@ export const story: Story = {
     {
       id: 'dead_d8_griffin',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'The pager does not care about happy hour. You learn about the outage from customer posts.',
       choices: []
     },
     {
       id: 'dead_d8_friday',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'You stay online, but you still shipped into Friday peak with half the company offline. The incident runs longer than the rota.',
       choices: []
     },
@@ -329,7 +345,7 @@ export const story: Story = {
         {
           label: 'Structured comms',
           description:
-            'CORRECT — Send a pre-release message to the company, then follow up with a notification and release notes when the feature goes live.',
+            'Send a pre-release message to the company, then follow up with a notification and release notes when the feature goes live.',
           nextSceneId: 'd10_whats_next'
         },
         {
@@ -342,12 +358,14 @@ export const story: Story = {
     {
       id: 'dead_d9_mic',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'Half the company hears a garbled toast; the other half hears nothing. Support still gets ambushed.',
       choices: []
     },
     {
       id: 'dead_d9_hope',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'Silence is not confidence. Adoption flatlines while everyone assumes someone else already knows.',
       choices: []
     },
@@ -370,7 +388,7 @@ export const story: Story = {
         {
           label: 'Learn from reality',
           description:
-            'CORRECT — Watch product analytics to see whether people use what we built and where they struggle.',
+            'Watch product analytics to see whether people use what we built and where they struggle.',
           nextSceneId: 'ending_win'
         }
       ]
@@ -378,12 +396,14 @@ export const story: Story = {
     {
       id: 'dead_d10_party',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'The party was fun; the dashboards stayed dark. You celebrate a launch you never measure.',
       choices: []
     },
     {
       id: 'dead_d10_stack',
       title: 'Wrong turn',
+      allowBack: true,
       body: 'The team never catches its breath. Quality slips on the next thing before this one proves its value.',
       choices: []
     },

@@ -15,6 +15,8 @@ export interface Scene {
   image?: string
   /** Empty array denotes an ending scene. */
   choices: Choice[]
+  /** When true, terminal scenes show a control to return to the previous decision. */
+  allowBack?: boolean
 }
 
 export interface Story {

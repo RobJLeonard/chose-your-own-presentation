@@ -21,6 +21,10 @@ export function useStory() {
     return !!scene && scene.choices.length === 0
   })
 
+  const canGoBack = computed(
+    () => !!currentScene.value?.allowBack && pastSceneIds.value.length > 0
+  )
+
   /** Full path from start to now, including the current scene ID. */
   const pathSceneIds = computed(() => [...pastSceneIds.value, currentSceneId.value])
 
@@ -40,6 +44,15 @@ export function useStory() {
     pastSceneIds.value = []
   }
 
+  /** Return to the scene you were on before this terminal (e.g. wrong-turn) scene. */
+  function goBack() {
+    const prev = pastSceneIds.value.pop()
+    if (prev === undefined) {
+      return
+    }
+    currentSceneId.value = prev
+  }
+
   function getSceneTitle(sceneId: string): string {
     return sceneMap.get(sceneId)?.title ?? sceneId
   }
@@ -55,8 +68,10 @@ export function useStory() {
     history,
     pathSceneIds,
     isEnd,
+    canGoBack,
     chooseOption,
     restart,
+    goBack,
     getSceneTitle
   })
 }
